@@ -19,9 +19,12 @@ public class Letter_Swap_Case {
             return passCh;
         }
         if(Character.isAlphabetic(password.charAt(ind))){
-            password.replace(ind,ind+1,Character.toLowerCase(password.charAt(ind))+"");
             passCh.addAll(passwordCheck(password,ind+1));
-            password.replace(ind,ind+1,Character.toUpperCase(password.charAt(ind))+"");
+            if(Character.isLowerCase(password.charAt(ind))){
+                password.replace(ind,ind+1,Character.toUpperCase(password.charAt(ind))+"");
+            }else{
+                password.replace(ind,ind+1,Character.toLowerCase(password.charAt(ind))+"");
+            }
             passCh.addAll(passwordCheck(password,ind+1));
         }else{
             passCh.addAll(passwordCheck(password,ind+1));
